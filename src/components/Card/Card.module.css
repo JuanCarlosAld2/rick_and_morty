@@ -1,0 +1,39 @@
+.container{
+    border: 10px solid #32475b;
+    background-image:url(/src/assets/img/targeta.jpg) ;
+    border-radius: 50px;
+    width: 170px;
+    padding: 10px;
+    box-shadow: 10px black;
+
+}
+
+.image{
+    border: 2px solid #0a151f;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    width: 150px;
+}
+
+.buttonContainer{
+    display: flex;
+    justify-content: flex-end;
+    width: 150px;
+}
+.buttonContainer button{
+    background-color:#060c13;
+    color:white;
+    border: 0px;
+    border-radius: 2px;
+}
+
+.dataContainer{
+text-align: center;
+padding: 10px;
+}
+.dataContainer h3{
+    margin: 2px;
+    font-size: 16px;
+    color:#ced2d6;
+}
