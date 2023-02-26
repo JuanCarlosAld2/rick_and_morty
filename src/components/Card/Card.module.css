@@ -1,6 +1,6 @@
 .container{
     border: 10px solid #32475b;
-    background-image:url(/src/assets/img/targeta.jpg) ;
+    background-image:url(/src/assets/img/fondo3.jpg) ;
     border-radius: 50px;
     width: 170px;
     padding: 10px;
@@ -9,7 +9,7 @@
 }
 
 .image{
-    border: 2px solid #0a151f;
+    border: 3px solid #4f6378;
     border-radius: 50%;
     display: inline-block;
     position: relative;
