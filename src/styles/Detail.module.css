@@ -1,0 +1,32 @@
+/* Estilos para la tabla */
+.table {
+  border-collapse: collapse;
+  width: 200px;
+  margin: 20px auto; /* Se agrega 'auto' al margen horizontal para centrar la tabla */
+  background-color: transparent;
+}
+
+/* Estilos para las celdas */
+.td {
+  font-size: 30px;
+  color: #f0f0f0; /* Color humo (gris claro) */
+  padding: 8px;
+  text-align: left;
+  box-shadow: 0 0 150px rgba(0, 0, 0, 2.5); /* Sombra en las celdas */
+}
+
+/* Estilos para la imagen */
+.img {
+  width: 550px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.5s ease; /* Agregar una transición suave para el efecto hover */
+  border-radius: 50%; /* Hacer la imagen ovalada */
+  box-shadow: 0 0 500px rgba(0, 0, 0, 3.5); /* Bordes transparentes oscuros */
+}
+
+/* Efecto hover para la imagen */
+.img:hover {
+  transform: rotateY(360deg); /* Rotar la imagen en el eje Y (horizontal) al hacer hover */
+}

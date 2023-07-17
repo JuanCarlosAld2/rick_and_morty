@@ -1,0 +1,14 @@
+.nav {
+    border: 10px solid rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end; /* Cambiado a flex-end para alinear a la derecha */
+    margin: 20px;
+    padding: 18px;
+    background-color: transparent; /* Cambiado a transparente */
+    height: 10vh;
+      
+}
+
+    
