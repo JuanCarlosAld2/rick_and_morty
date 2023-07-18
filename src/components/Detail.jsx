@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom"
-import Card from "./Card";
+//import Card from "./Card";
 import style from "../styles/Detail.module.css"
 
 

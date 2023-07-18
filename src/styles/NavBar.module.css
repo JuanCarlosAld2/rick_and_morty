@@ -2,13 +2,36 @@
     border: 10px solid rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end; /* Cambiado a flex-end para alinear a la derecha */
+    flex-direction: row-reverse; /* Intercambiamos la dirección para colocar los elementos uno al lado del otro en orden inverso */
+    justify-content: space-between; /* Alineados al espacio entre ellos horizontalmente */
+    align-items: flex-end; /* Alineados al fondo verticalmente */
     margin: 20px;
     padding: 18px;
     background-color: transparent; /* Cambiado a transparente */
     height: 10vh;
-      
 }
 
-    
+/* Nueva clase para el contenedor del SearchBar */
+.search-container {
+    display: flex;
+    align-items: flex-end; /* Alineado en la parte inferior */
+    margin-left: 10px; /* Agregamos un margen izquierdo para separar el SearchBar de los botones */
+}
+
+.button {
+    display: flex;
+    align-items: center; /* Alinea el contenido verticalmente */
+    justify-content: center; /* Alinea el contenido horizontalmente */
+    background-color: transparent; /* Cambiado a transparente */
+    border: none;
+    margin-right: 2px; /* Reducimos el margen derecho para acercar los botones aún más */
+}
+
+.button:last-child {
+    margin-right: 0; /* Eliminamos el margen derecho del último botón para que no quede espacio extra */
+}
+
+.button img {
+    max-width: 10%; /* Ajusta el tamaño máximo de la imagen al tamaño del botón */
+    max-height: 10%; /* Ajusta el tamaño máximo de la imagen al tamaño del botón */
+}

@@ -1,38 +1,49 @@
 /* Estilos para el contenedor */
 .div {
-    text-align: center;
-  }
-  
-  /* Estilos para la tabla */
-  .table {
-    border-collapse: collapse;
-    width: 60%;
-    margin: 20px auto; /* Se centra la tabla horizontalmente */
-    background-color: transparent;
-  }
-  
-  /* Estilos para el encabezado de la tabla */
-  .thead {
-    font-size: 45px; /* Tamaño de la letra en el encabezado de la tabla */
-    color: #4CAF50; /* Color verde */
-    text-align: center; /* Centrar el encabezado */
-  }
-  
-  /* Estilos para los botones */
-  .button {
-    padding: 10px 20px;
-    margin: 10px; /* Espacio entre los botones */
-    background-color: transparent; /* Botones transparentes */
-    color: #4CAF50; /* Texto en color verde */
-    border: 2px solid #4CAF50; /* Borde de 2px de color verde */
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease; /* Transición suave para el efecto hover */
-  }
-  
-  /* Efecto hover para los botones */
-  .button:hover {
-    background-color: #4CAF50; /* Botones se hacen más oscuros al hacer hover */
-    color: white; /* Texto en color blanco al hacer hover */
-  }
-  
+  text-align: center;
+}
+
+/* Estilos para la tabla */
+.table {
+  border-collapse: collapse;
+  width: 60%;
+  margin: 20px auto; /* Se centra la tabla horizontalmente */
+  background-color: transparent;
+}
+
+/* Estilos para el encabezado de la tabla */
+.thead {
+  font-size: 45px; /* Tamaño de la letra en el encabezado de la tabla */
+  color: #4CAF50; /* Color verde */
+  text-align: center; /* Centrar el encabezado */
+}
+
+/* Estilos para los botones */
+.button {
+  padding: 10px;
+  margin: 10px; /* Espacio entre los botones */
+  background-color: transparent; /* Botones transparentes */
+  color: #4CAF50; /* Texto en color verde */
+  border: 2px solid #4CAF50; /* Borde de 2px de color verde */
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.3s ease; /* Transición suave para el efecto hover */
+  width: 200px; /* Ajustar el ancho del botón */
+  height: 200px; /* Ajustar la altura del botón */
+  display: flex; /* Usar flexbox para centrar la imagen verticalmente */
+  justify-content: center; /* Centrar la imagen horizontalmente */
+  align-items: center; /* Centrar la imagen verticalmente */
+}
+
+/* Efecto hover para los botones */
+.button:hover {
+  background-color: #4CAF50; /* Botones se hacen más oscuros al hacer hover */
+  color: white; /* Texto en color blanco al hacer hover */
+}
+
+/* Estilos para la imagen dentro del botón */
+.button img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block; /* Eliminar espacios en blanco debajo de la imagen */
+}
