@@ -35,3 +35,16 @@
     max-width: 10%; /* Ajusta el tamaño máximo de la imagen al tamaño del botón */
     max-height: 10%; /* Ajusta el tamaño máximo de la imagen al tamaño del botón */
 }
+
+.logout {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 8px 12px; /* Ajusta el padding para que el botón tenga un tamaño adecuado */
+    border-radius: 5px; /* Agrega esquinas redondeadas para el botón */
+    cursor: pointer;
+}
+
+.logout:hover {
+    background-color: #333; /* Cambia el color de fondo cuando el botón está en estado de hover */
+}

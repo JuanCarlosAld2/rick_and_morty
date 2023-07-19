@@ -1,9 +1,9 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import './App.css';
 import Cards from './components/Cards.jsx';
 import NavBar from './components/NavBar';
 import axios from "axios";
-import {Routes,Route,useLocation} from 'react-router-dom'
+import {Routes,Route,useLocation,useNavigate} from 'react-router-dom'
 import About from './components/About';
 import Detail from './components/Detail';
 import Error from './components/Error';
@@ -12,6 +12,24 @@ import Login from './components/Login';
 function App() {
 
    const [characters, setCharacters]= useState([]);
+   const [access,setAccess] =useState(false)
+   const navigate = useNavigate();
+   const EMAIL = 'juan@gmail.com';
+   const PASSWORD = 'juan123';
+   
+   function login(userData) {
+      if (userData.password === PASSWORD && userData.email === EMAIL) {
+         setAccess(true);
+         navigate('/home');
+      }
+   }
+   function logout(){
+      setAccess(false)
+   }
+
+   useEffect(() => {
+      !access && navigate('/');
+   }, [access]);
 
    function onSearch(id) {
       axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
@@ -31,32 +49,25 @@ function App() {
       setCharacters(deleteCharacters)
    }
    const rt = {
-      login:"/login",
+      login:"/",
       home:"/home",
       about:"/about",
       detail:"/detail/:id"
    }
 
    const {pathname}= useLocation();
-      let [,ruta]= pathname.split("/");
+      //let [,ruta]= pathname.split("/");
 
     
    return (
       <div className='App'>
-         <NavBar onSearch={onSearch}/>
-         
-         
-         {
-           rt.hasOwnProperty(ruta) ?null:<Error/>
-           
-         }
+         {pathname === rt.login ? null : <NavBar onSearch={onSearch} logout={logout}/>}
          <Routes>
-            
-            <Route path={rt.login} element={<Login/>}></Route>
+            <Route path={rt.login} element={<Login login={login}/>}></Route>
             <Route path={rt.home} element={<Cards characters={characters} onClose={onClose} />}></Route>
             <Route path={rt.about} element={<About/>}></Route>
             <Route path={rt.detail} element={<Detail/>}></Route>
-
+            <Route path='*' element={<Error/>}/>
          </Routes>
          
        

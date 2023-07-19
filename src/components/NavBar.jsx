@@ -6,7 +6,7 @@ import ho from '../assets/iconos/homa.png'
 import inf from '../assets/iconos/info.png'
 
 
-export default function NavBar({onSearch}){
+export default function NavBar({onSearch,logout}){
 
     return(
         <div className={style.nav}>
@@ -19,12 +19,16 @@ export default function NavBar({onSearch}){
                         <img src={ho} alt="home" />
                     </button>
                 </Link>
+            </div>
+            <div>
                 <Link to='/about'>
                     <button className={style.button}>
                         <img src={inf} alt="about" />
                     </button>
                 </Link> 
-
+            </div>
+            <div>
+                <button onClick={logout} className={style.logout}>logout</button>
             </div>
         </div>
     )
