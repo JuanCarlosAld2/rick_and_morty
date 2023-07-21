@@ -29,3 +29,25 @@ export const validateEmail = (data, setErrors, errors) => {
 };
 
 
+///podria ser asi 
+
+//  export function validate3 (inputs){
+//     const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3}$/;
+//     //const regexPass = /^(?=.*[0-9])/;
+//     const errors = {}
+
+//     if(!inputs.email){
+//         errors.email="Debe haber un email"
+//     }
+//     else if(!inputs.password){
+//         errors.password = "Debe haber un password"
+//     }
+//     else if(!regexEmail.test(inputs.email)){
+//         errors.email = "debe ser un email valido"
+//     }
+//     return errors
+
+// }
+
+
+

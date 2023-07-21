@@ -3,7 +3,9 @@ import { validateEmail } from "./validations";
 import { validatepassword } from "./validations";
 
 export default function Login({login}){
-
+    const errorStyle = {
+        color: "red",
+      };
     const [userData,setUserData]=useState({
         email:"",
         password:""
@@ -29,7 +31,17 @@ export default function Login({login}){
 
     const handleSubmit = (e)=>{
         e.preventDefault()
-        login(userData)
+        if(!errors.email && !errors.password ){
+            setUserData({
+                email:"",
+                password:""
+            })
+            setErrors({  
+                email:"",
+                password:""
+            })
+            login(userData)
+        }
     }
 
     return(
@@ -42,8 +54,8 @@ export default function Login({login}){
                     value={userData.email}
                     onChange={handleEmail}
                 />
-                <th/>
-                <span>{errors.email}</span>
+                <br/>
+                <p style={errorStyle}>{errors.email}</p>
             </div> 
             <div>
                 <input 
@@ -54,11 +66,13 @@ export default function Login({login}){
                     onChange={handlePass}
             
                 />
-                <th/>
-                <span>{errors.password}</span>
+                <br/>
+                <p style={errorStyle}>{errors.password}</p>
             </div>
+            {
+                setUserData.email || userData.password ? <button type="submit">submit</button>:null 
+            }
             
-            <button type="submit">submit</button>
     
             
         </form>

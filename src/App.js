@@ -12,7 +12,9 @@ import Login from './components/Login';
 function App() {
 
    const [characters, setCharacters]= useState([]);
-   const [access,setAccess] =useState(false)
+   const [access,setAccess] =useState(false);
+   const {pathname}= useLocation();
+      //let [,ruta]= pathname.split("/");
    const navigate = useNavigate();
    const EMAIL = 'juan@gmail.com';
    const PASSWORD = 'juan123';
@@ -21,6 +23,8 @@ function App() {
       if (userData.password === PASSWORD && userData.email === EMAIL) {
          setAccess(true);
          navigate('/home');
+      }else{
+         alert("Datos incorrectos")
       }
    }
    function logout(){
@@ -55,8 +59,7 @@ function App() {
       detail:"/detail/:id"
    }
 
-   const {pathname}= useLocation();
-      //let [,ruta]= pathname.split("/");
+   
 
     
    return (
