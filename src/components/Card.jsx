@@ -37,7 +37,7 @@ export default function Card(props) {
 
    return (
       <div key={id} className={style.card}>
-           {
+         {
             pathname === "/home" ? (
                isFav ? (
                   <button onClick={handleFavorite}>❤️</button>

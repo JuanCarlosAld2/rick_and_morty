@@ -4,8 +4,8 @@ import style from '../styles/Cards.module.css'
 
 export default function Cards({characters,onClose}) {
    return <div className={style.cards_container}>
-            {characters.map((el)=>(
-               
+            {  characters &&
+               characters.map((el)=>(
                <Card 
                key={el.id} // solo sirve para react !== de id 
                id={el.id}

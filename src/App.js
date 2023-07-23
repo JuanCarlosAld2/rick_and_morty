@@ -82,7 +82,7 @@ function App() {
             <Route path={rt.home} element={<Cards characters={characters} onClose={onClose} />}></Route>
             <Route path={rt.about} element={<About/>}></Route>
             <Route path={rt.detail} element={<Detail/>}></Route>
-            <Route path={rt.favorites} element={<Favorites/>}></Route>
+            <Route path={rt.favorites} element={<Favorites />}></Route>
             <Route path='*' element={<Error/>}/>
          </Routes>
          

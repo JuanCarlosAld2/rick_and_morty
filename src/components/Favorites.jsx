@@ -14,7 +14,7 @@ const Favorites = () =>{
 
     return(
         <div>
-            {
+            {   myFavorites &&
                 myFavorites.map((el)=>(
                     <Card
                     key={el.id}
