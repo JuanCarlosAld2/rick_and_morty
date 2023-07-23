@@ -36,15 +36,19 @@
     max-height: 10%; /* Ajusta el tamaño máximo de la imagen al tamaño del botón */
 }
 
-.logout {
+
+.buton2 {
+    padding: 10px 20px;
     background-color: black;
     color: white;
     border: none;
-    padding: 8px 12px; /* Ajusta el padding para que el botón tenga un tamaño adecuado */
-    border-radius: 5px; /* Agrega esquinas redondeadas para el botón */
+    border-radius: 4px 0 0 4px;
     cursor: pointer;
-}
-
-.logout:hover {
-    background-color: #333; /* Cambia el color de fondo cuando el botón está en estado de hover */
-}
+    font-size: 16px;
+    margin-right: 5px; /* Agrega el espacio entre los dos botones */
+  }
+  
+  .buton2:hover {
+    background-color: #333;
+  }
+  

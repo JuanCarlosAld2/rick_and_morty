@@ -28,7 +28,12 @@ export default function NavBar({onSearch,logout}){
                 </Link> 
             </div>
             <div>
-                <button onClick={logout} className={style.logout}>logout</button>
+                <button onClick={logout} className={style.buton2}>logout</button>
+            </div>
+            <div>
+                <Link to="/favorites">
+                    <button className={style.buton2}>Favorites</button>
+                </Link> 
             </div>
         </div>
     )

@@ -8,6 +8,10 @@ import About from './components/About';
 import Detail from './components/Detail';
 import Error from './components/Error';
 import Login from './components/Login';
+import Favorites from './components/Favorites';
+import {removeFav} from './redux/actions'
+import { useDispatch } from 'react-redux';
+
 
 function App() {
 
@@ -18,6 +22,9 @@ function App() {
    const navigate = useNavigate();
    const EMAIL = 'juan@gmail.com';
    const PASSWORD = 'juan123';
+   const dispatch = useDispatch();
+  
+
    
    function login(userData) {
       if (userData.password === PASSWORD && userData.email === EMAIL) {
@@ -29,6 +36,8 @@ function App() {
    }
    function logout(){
       setAccess(false)
+      setCharacters([])
+      
    }
 
    useEffect(() => {
@@ -51,12 +60,15 @@ function App() {
    const onClose = (id) =>{
       const deleteCharacters = characters.filter((e)=> e.id !== Number(id))
       setCharacters(deleteCharacters)
+      dispatch(removeFav(id))
+     
    }
    const rt = {
       login:"/",
       home:"/home",
       about:"/about",
-      detail:"/detail/:id"
+      detail:"/detail/:id",
+      favorites:"/favorites"
    }
 
    
@@ -70,6 +82,7 @@ function App() {
             <Route path={rt.home} element={<Cards characters={characters} onClose={onClose} />}></Route>
             <Route path={rt.about} element={<About/>}></Route>
             <Route path={rt.detail} element={<Detail/>}></Route>
+            <Route path={rt.favorites} element={<Favorites/>}></Route>
             <Route path='*' element={<Error/>}/>
          </Routes>
          
