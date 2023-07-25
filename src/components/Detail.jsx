@@ -1,28 +1,13 @@
-import React,{useState,useEffect} from "react";
-import axios from "axios";
-import { useParams } from "react-router-dom"
+import React from "react";
+
 //import Card from "./Card";
 import style from "../styles/Detail.module.css"
+import useCharacter from "./hooks/useCharacter";
 
 
 export default function Detail(){
 
-    const [character, setCharacter]=useState({});
-
-    const {id} = useParams();
-
-
-    useEffect(()=>{
-        axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
-        if (data.name) {
-            setCharacter(data)
-        } else {
-            window.alert('No hay personajes con ese ID');
-        }
-   });
-   return setCharacter({});
-    },[id])
-
+    const character = useCharacter();
 
     return (
         <table className={style.table}>

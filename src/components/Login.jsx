@@ -70,7 +70,7 @@ export default function Login({login}){
                 <p style={errorStyle}>{errors.password}</p>
             </div>
             {
-                setUserData.email || userData.password ? <button type="submit">submit</button>:null 
+                userData.email && userData.password ? <button type="submit">submit</button>:null 
             }
             
     
