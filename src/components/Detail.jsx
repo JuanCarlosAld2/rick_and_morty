@@ -7,7 +7,7 @@ import useCharacter from "./hooks/useCharacter";
 
 export default function Detail(){
 
-    const character = useCharacter();
+    const character = useCharacter(); // modificacion de video 13 hooks jorgue vega 36a
 
     return (
         <table className={style.table}>
