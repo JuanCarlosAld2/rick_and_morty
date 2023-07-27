@@ -1,0 +1,36 @@
+/* style.module.css (o el nombre de tu archivo CSS) */
+
+/* Estilo base para los select */
+select {
+    background-color: black;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  /* Estilo hover para los select */
+  select:hover {
+    background-color: #333;
+  }
+  
+  /* Estilo base para el botón */
+  button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  /* Estilo hover para el botón */
+  button:hover {
+    background-color: #333;
+  }
+  
+  

@@ -4,6 +4,7 @@ import Card from "./Card";
 import {removeFav } from '../redux/actions'
 import { useDispatch } from 'react-redux';
 import { filterCards,orderCards,reset } from "../redux/actions";
+import style from "../styles/Favorites.module.css"
 
 const Favorites = () =>{
 
@@ -30,7 +31,7 @@ const Favorites = () =>{
 
     return(
         <div>
-            <select name="order" onChange={handleOrder} defaultValue={"DEFAULT"}>
+            <select name="order" onChange={handleOrder} defaultValue={"DEFAULT"} className={style.select}>
                 <option value="DEFAULT" disabled>Select Order</option>
                 <option value="A">Ascendente</option>
                 <option value="D">Descendente</option>
@@ -42,7 +43,7 @@ const Favorites = () =>{
                 <option value="Genderless">Genderless</option>
                 <option value="unknown">unknown</option>
             </select>
-            <button onClick={handleReset}>Reset</button>
+            <button onClick={handleReset} className={style.button}>Reset</button>
 
             {   myFavorites &&
                 myFavorites.map((el)=>(

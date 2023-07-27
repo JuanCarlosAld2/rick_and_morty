@@ -1,0 +1,15 @@
+{
+  "name": "rickandmorty",
+  "version": "1.0.0",
+  "description": "primerservidor",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/index.js"
+  },
+  "author": "Juan",
+  "license": "ISC"
+}

@@ -45,17 +45,23 @@ function App() {
    }, [access]);
 
    function onSearch(id) {
-      axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
-
-         if (data.id) {
-            if(!characters.some((e)=> e.id === data.id)){
-               setCharacters((oldChars) => [...oldChars, data]);
-            }
-         } else {
+      axios(`http://localhost:3001/rickandmorty/character/${id}`)
+         .then(({ data }) => {
+            console.log(data);
+            if (Number(data.id)) {
+               if (!characters.some((e) => e.id === data.id)) {
+                  setCharacters((oldChars) => [...oldChars, data]);
+               }
+            }else{
+               alert("¡No hay personajes con este ID!")
+            } 
+         })
+         .catch((error) => {
             window.alert('¡No hay personajes con este ID!');
-         }
-      });
+           // console.error(error); // Puedes mostrar información detallada del error en la consola para ayudar en el diagnóstico.
+         });
    }
+   
 
    const onClose = (id) =>{
       const deleteCharacters = characters.filter((e)=> e.id !== Number(id))
