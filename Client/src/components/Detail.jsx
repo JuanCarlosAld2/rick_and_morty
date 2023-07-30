@@ -10,8 +10,9 @@ export default function Detail(){
     const character = useCharacter(); // modificacion de video 13 hooks jorgue vega 36a
 
     return (
-        <table className={style.table}>
+        <table className={style.table} key={character.id}>
             <tbody>
+                
                 <tr>
                     <td  rowSpan="6" className={style.td}>
                         <img src={character.image} alt={character.name} className={style.img} />
@@ -37,8 +38,9 @@ export default function Detail(){
                 </tr>
                 <tr>
                     <td className={style.td}>Origen:</td>
-                    <td className={style.td}>{character.origin?.name}</td>
+                    <td className={style.td}>{character.origin}</td>
                 </tr>
+                
             </tbody>
         </table>
       );

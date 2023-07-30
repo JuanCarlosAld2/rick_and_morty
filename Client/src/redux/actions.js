@@ -25,7 +25,7 @@ export const removeFav = (id) =>{
 
 export const getCharacterDetail= (id)=>{
     return (dispatch)=>{
-        fetch(`http://localhost:3001/rickandmorty/character/${id}`)
+        fetch(`http://localhost:3001/rickandmorty/character/${id}`)//cambiar a https://rickandmortyapi.com/api/character/${id} en caso de fallo 
         .then(response => response.json())
         .then(( data ) => {
             if (data.name) dispatch({type:GET_CHARACTER_DETAIL,payload:data})

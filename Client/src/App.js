@@ -42,22 +42,23 @@ function App() {
 
    useEffect(() => {
       !access && navigate('/');
-   }, [access]);
+   }, [access, navigate]);// si falla quitar navigate (duda)
 
    function onSearch(id) {
       axios(`http://localhost:3001/rickandmorty/character/${id}`)
          .then(({ data }) => {
-            console.log(data);
+            //console.log(data);
             if (Number(data.id)) {
                if (!characters.some((e) => e.id === data.id)) {
                   setCharacters((oldChars) => [...oldChars, data]);
                }
-            }else{
-               alert("¡No hay personajes con este ID!")
-            } 
+            }
          })
          .catch((error) => {
+            console.log(error.response.data.message.message);
+            //Request failed with status code 404
             window.alert('¡No hay personajes con este ID!');
+            //window.alert(error.response.data.error); // viene del servidor 
            // console.error(error); // Puedes mostrar información detallada del error en la consola para ayudar en el diagnóstico.
          });
    }

@@ -6,7 +6,7 @@ export default function SearchBar({onSearch}) {
    const[id,setID]=useState("")
 
    const handleChange = (e) => {
-      setID(e.target.name= e.target.value)
+      setID(e.target.value)
    }
    const handeleRandom = ()=>{
       let rdNumber =  Math.floor((Math.random() * (826 - 1 + 1)) + 1);

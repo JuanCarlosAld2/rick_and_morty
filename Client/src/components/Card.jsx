@@ -47,7 +47,8 @@ export default function Card(props) {
             ) : null
          }
          <button onClick={()=>onClose(id) }>x</button>
-         <h2>{name}</h2>
+         <h3>{name}</h3>
+         
          <Link to={`/detail/${id}`}>
             <img src={image} alt={name} className={style.image}/>
          </Link>

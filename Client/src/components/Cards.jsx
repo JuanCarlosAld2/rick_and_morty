@@ -13,7 +13,7 @@ export default function Cards({characters,onClose}) {
                status={el.status}
                species={el.species} 
                gender={el.gender} 
-               origin={el.origin.name}
+               origin={el.origin}// modificacion en el servidor 3001 (controllers)
                image={el.image}
                onClose={onClose} 
                /> 

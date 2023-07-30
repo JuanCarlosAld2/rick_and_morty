@@ -11,5 +11,8 @@
     "start": "nodemon ./src/index.js"
   },
   "author": "Juan",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0"
+  }
 }
