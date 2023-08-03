@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 export default function Card(props) {
    
    const {id,name,status,species,gender,origin,image,onClose} = props;
-
+    //console.log(typeof(id));  string
    const [isFav,setIsFav]= useState(false);
 
    const myFavorites = useSelector((state)=>state.myFavorites);// concexiona al stateglobal
@@ -18,6 +18,7 @@ export default function Card(props) {
 
    const handleFavorite = () =>{
       if(isFav){
+        
          setIsFav(false)
          dispatch(removeFav(id))
       }
@@ -38,7 +39,7 @@ export default function Card(props) {
    return (
       <div key={id} className={style.card}>
          {
-            pathname === "/home" ? (
+            pathname === "/home" ? ( // condicion para que cuando no este en ruta home desaparesca el corazon
                isFav ? (
                   <button onClick={handleFavorite}>❤️</button>
                ): (

@@ -8,21 +8,35 @@ import {
     RESET
 } from './actionsTypes';
 
-export const addFav = (per) =>{
-    return{
-        type:ADD_FAV,
-        payload:per
-    }
-}
+import axios from "axios"
 
-export const removeFav = (id) =>{
-    return{
-        type:REMOVE_FAV,
-        payload: id,
-    }
+export const addFav = (character) => { //{id,name,status,species,gender,origin,image,onClose}
+    const endpoint = 'http://localhost:3001/rickandmorty/fav';
+    return (dispatch) => {
+       axios.post(endpoint, character).then(({ data }) => {
+           // console.log(data);//[{id,name,status,species,gender,origin,image,onClose}]
+          return dispatch({
+             type: ADD_FAV,
+             payload: data,
+          });
+       });
+    };
+ };
 
-}
-
+ export const removeFav = (id) => { 
+    
+    const endpoint = `http://localhost:3001/rickandmorty/fav/${id}`; //retorna  [{}]
+    return (dispatch) => {
+       axios.delete(endpoint).then(({ data }) => { //[{}]
+        //console.log(data);
+          return dispatch({
+             type: REMOVE_FAV,
+             payload: data,
+       });
+       });
+    };
+ };
+ 
 export const getCharacterDetail= (id)=>{
     return (dispatch)=>{
         fetch(`http://localhost:3001/rickandmorty/character/${id}`)//cambiar a https://rickandmortyapi.com/api/character/${id} en caso de fallo 
@@ -60,3 +74,25 @@ export const reset = () =>{
         type: RESET
     }
 }
+
+
+
+/* 
+codigo antiguo 
+export const addFav = (per) =>{
+    return{
+        type:ADD_FAV,
+        payload:per
+    }
+}
+
+
+
+export const removeFav = (id) =>{
+    return{
+        type:REMOVE_FAV,
+        payload: id,
+    }
+
+}
+*/

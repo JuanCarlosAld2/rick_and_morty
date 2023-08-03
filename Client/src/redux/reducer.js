@@ -21,16 +21,20 @@ const rootReducer = (state=initialState,action) =>{
 
         case ADD_FAV:
             return { 
-                ...state,
-                myFavorites:[...state.myFavorites,action.payload],
-                allCharacters:[...state.myFavorites,action.payload]
+
+                ...state, myFavorites: action.payload, allCharacters: action.payload
+                // ...state,
+                // myFavorites:[...state.myFavorites,action.payload],
+                // allCharacters:[...state.myFavorites,action.payload]
             };
         case REMOVE_FAV:
-                let newFavorites = state.myFavorites.filter((per)=>per.id !== Number(action.payload))
+               // let newFavorites = state.myFavorites.filter((per)=>per.id !== Number(action.payload))
             return {
-                ...state,
-                myFavorites:newFavorites,
-                allCharacters:newFavorites
+
+                ...state, myFavorites: action.payload, allCharacters:action.payload
+                //...state,
+                //myFavorites:newFavorites,
+                //allCharacters:newFavorites
             }
         case GET_CHARACTER_DETAIL:
             return{

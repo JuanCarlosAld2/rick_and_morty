@@ -10,7 +10,7 @@ const mainRouter = Router();
 mainRouter.get("/login",login)
 mainRouter.get("/character/:id",getCharById)
 mainRouter.post("/fav",postFav)
-mainRouter.get("/fav/:id",deleteFav)
+mainRouter.delete("/fav/:id",deleteFav)
 
 
 

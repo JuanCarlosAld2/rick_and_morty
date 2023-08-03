@@ -20,27 +20,32 @@ function App() {
    const {pathname}= useLocation();
       //let [,ruta]= pathname.split("/");
    const navigate = useNavigate();
-   const EMAIL = 'juan@gmail.com';
-   const PASSWORD = 'juan123';
+  
    const dispatch = useDispatch();
   
 
-   
    function login(userData) {
-      if (userData.password === PASSWORD && userData.email === EMAIL) {
-         setAccess(true);
-         navigate('/home');
-      }else{
-         alert("Datos incorrectos")
-      }
-   }
-   function logout(){
-      setAccess(false)
-      setCharacters([])
-      
+      const { email, password } = userData;
+      const URL = 'http://localhost:3001/rickandmorty/login/';
+      axios(`${URL}?email=${email}&password=${password}`)
+      .then(({ data }) => {
+         const { access } = data;
+         if(access){
+            setAccess(data);
+            access && navigate('/home');
+         }else{
+            alert("Datos incorrectos")
+         }
+         
+      })
    }
 
-   useEffect(() => {
+    function logout(){
+      setAccess(false)
+      setCharacters([])
+   }
+
+   useEffect(() => { // setea el state characters cargando la informacion
       !access && navigate('/');
    }, [access, navigate]);// si falla quitar navigate (duda)
 
@@ -50,7 +55,7 @@ function App() {
             //console.log(data);
             if (Number(data.id)) {
                if (!characters.some((e) => e.id === data.id)) {
-                  setCharacters((oldChars) => [...oldChars, data]);
+                  setCharacters([...characters, data]);
                }
             }
          })
@@ -66,7 +71,8 @@ function App() {
    
 
    const onClose = (id) =>{
-      const deleteCharacters = characters.filter((e)=> e.id !== Number(id))
+      //console.log(characters);
+      const deleteCharacters = characters.filter((e)=> Number(e.id) !== Number(id))
       setCharacters(deleteCharacters)
       dispatch(removeFav(id))
      
@@ -100,3 +106,25 @@ function App() {
 }
 
 export default App;
+
+
+
+/* 
+
+//primer funcion
+
+ const EMAIL = 'juan@gmail.com';
+ const PASSWORD = 'juan123';
+
+  // function login(userData) {
+   //    if (userData.password === PASSWORD && userData.email === EMAIL) {
+   //       setAccess(true);
+   //       navigate('/home');
+   //    }else{
+   //       alert("Datos incorrectos")
+   //    }
+   // }
+  
+
+
+*/
