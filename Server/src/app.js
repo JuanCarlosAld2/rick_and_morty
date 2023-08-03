@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const mainRouter = require('./routes/index')
-
+const urlncode = express.urlencoded({extended:false});// cuestion de formularios
 
 const app = express();
 
@@ -13,6 +13,7 @@ app.use((req, res, next) => {                           /// |-> se coloca ruta d
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE'); //Autorizo las solicitudes tipo GET, POST, OPTIONS, PUT y DELETE.
     next();
 });
+app.use(urlncode)
 
 app.use(morgan("dev"))
 

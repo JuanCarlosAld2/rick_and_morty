@@ -1,17 +1,17 @@
 const axios = require('axios');
 
+require('dotenv').config()//process.env
+const URL= process.env.API_URL
 
 
-const url = "https://rickandmortyapi.com/api/character/";
 
 const getCharById = (req,res)=>{
-    
     const {id}= req.params //string
-    axios(`${url}${id}`)
+    axios(`${URL}${id}`)
     .then(({data})=>{
         if(data){
             const personaje= {
-                id:id,
+                id:data.id,
                 name:data.name,
                 gender:data.gender,
                 species:data.species,
@@ -19,7 +19,7 @@ const getCharById = (req,res)=>{
                 image: data.image,
                 status:data.status
             }
-            res.status(200).json(personaje)
+            return res.status(200).json(personaje)
         }else{
             res.status(404).json({message:"Not fount."})
         }
