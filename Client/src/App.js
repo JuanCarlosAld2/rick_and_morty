@@ -55,7 +55,8 @@ function App() {
             }
          })
          .catch((error) => {
-            console.log(error.response.data.message.message);
+            //console.log(error);
+            console.log(error.response.data.message.message);// proviene de server (getCharByID)
             //Request failed with status code 404
             window.alert('¡No hay personajes con este ID!');
             //window.alert(error.response.data.error); // viene del servidor 

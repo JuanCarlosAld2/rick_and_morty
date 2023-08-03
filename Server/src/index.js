@@ -1,3 +1,48 @@
+const app = require('./app');
+
+const PORT= 3001;
+
+app.listen(PORT,()=>{
+    console.log(`in port http://localhost:${PORT}`)
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+servior con HTTP
+
 // const db = require('./utils/data.js')// se en parte comentada
 const http = require('http');
 const PORT=3001;
@@ -61,6 +106,11 @@ http.createServer((req,res)=>{
 
     // res.writeHead(404);
     // res.end();
+
+
 }).listen(PORT,()=>{
     console.log(`in port: http://localhost:${PORT}`);
 })
+
+
+*/
