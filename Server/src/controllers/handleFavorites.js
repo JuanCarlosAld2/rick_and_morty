@@ -16,8 +16,7 @@ const deleteFav = (req,res) =>{
     if(!id){
         return res.status(404).json({message:"id not found"})
     }
-     favorites = favorites.filter((perso)=> perso.id !== Number(id))
-     console.log(favorites);
+    favorites = favorites.filter((perso)=> perso.id !== Number(id))
     res.status(200).json(favorites)
 
 

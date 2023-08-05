@@ -56,7 +56,9 @@ const Favorites = () =>{
                     
                     />
                 ))
+                
             }
+            
         </div>
     )
 }

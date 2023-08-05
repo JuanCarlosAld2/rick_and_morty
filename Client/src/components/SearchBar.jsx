@@ -14,16 +14,14 @@ export default function SearchBar({onSearch}) {
   }
 
   const hanleOnSearch=(e)=>{
-   if(id.length === 0) return null
-   if(!isNaN(id)){
-      onSearch(id)
-      setID("")
-   }else{
-      alert("No es un numero")
-      setID("")
-   }
-    
-     
+      if(id.length === 0) return null
+      if(!isNaN(id)){
+         onSearch(id)
+         setID("")
+      }else{
+         alert("No es un numero")
+         setID("")
+      }
   } 
    return (
       <div className={style.search}>

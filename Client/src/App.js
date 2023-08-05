@@ -24,11 +24,11 @@ function App() {
    const dispatch = useDispatch();
   
 
-   function login(userData) {
-      const { email, password } = userData;
-      const URL = 'http://localhost:3001/rickandmorty/login/';
-      axios(`${URL}?email=${email}&password=${password}`)
-      .then(({ data }) => {
+   async function login(userData) {
+      try {
+         const { email, password } = userData;
+         const URL = 'http://localhost:3001/rickandmorty/login/';
+         const {data} = await axios(`${URL}?email=${email}&password=${password}`);
          const { access } = data;
          if(access){
             setAccess(data);
@@ -36,8 +36,10 @@ function App() {
          }else{
             alert("Datos incorrectos")
          }
-         
-      })
+      } catch (error) {
+         console.log(error.message);
+      }
+
    }
 
     function logout(){
@@ -49,24 +51,24 @@ function App() {
       !access && navigate('/');
    }, [access, navigate]);// si falla quitar navigate (duda)
 
-   function onSearch(id) {
-      axios(`http://localhost:3001/rickandmorty/character/${id}`)
-         .then(({ data }) => {
-            //console.log(data);
-            if (Number(data.id)) {
-               if (!characters.some((e) => e.id === data.id)) {
-                  setCharacters([...characters, data]);
-               }
+   async function onSearch(id) {
+      try {
+         const URL = 'http://localhost:3001/rickandmorty/character/';
+         const {data} = await axios(`${URL}${id}`)
+         if(data.id){
+            if (!characters.some((e) => e.id === data.id)) {
+               setCharacters([...characters, data]);
             }
-         })
-         .catch((error) => {
-            //console.log(error);
-            console.log(error.response.data.message.message);// proviene de server (getCharByID)
-            //Request failed with status code 404
-            window.alert('¡No hay personajes con este ID!');
-            //window.alert(error.response.data.error); // viene del servidor 
-           // console.error(error); // Puedes mostrar información detallada del error en la consola para ayudar en el diagnóstico.
-         });
+         } else {
+            // Si data es undefined
+            console.log('¡No se encontraron datos para el ID proporcionado!');
+        }
+      } catch (error) {
+         window.alert('¡No hay personajes con este ID!');
+         console.log(error.response.data);// proviene de server (getCharByID)
+         //Request failed with status code 404
+         // Puedes mostrar información detallada del error en la consola para ayudar en el diagnóstico.
+      }
    }
    
 
@@ -124,7 +126,43 @@ export default App;
    //       alert("Datos incorrectos")
    //    }
    // }
+
+   //uso de promesas en login 
+   function login(userData) {
+      const { email, password } = userData;
+      const URL = 'http://localhost:3001/rickandmorty/login/';
+      axios(`${URL}?email=${email}&password=${password}`)
+      .then(({ data }) => {
+         const { access } = data;
+         if(access){
+            setAccess(data);
+            access && navigate('/home');
+         }else{
+            alert("Datos incorrectos")
+         }
+         
+      })
+   }
   
+   //funcion con promesas onserach
+      function onSearch(id) {
+      axios(`http://localhost:3001/rickandmorty/character/${id}`)
+         .then(({ data }) => {
+            //console.log(data);
+            if (Number(data.id)) {
+               if (!characters.some((e) => e.id === data.id)) {
+                  setCharacters([...characters, data]);
+               }
+            }
+         })
+         .catch((error) => {
+            window.alert('¡No hay personajes con este ID!');
+            console.log(error.response.data);// proviene de server (getCharByID)
+            //Request failed with status code 404
+            // Puedes mostrar información detallada del error en la consola para ayudar en el diagnóstico.
+           
+         });
+   }
 
 
 */

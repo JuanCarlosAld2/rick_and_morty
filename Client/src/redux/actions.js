@@ -11,32 +11,37 @@ import {
 import axios from "axios"
 
 export const addFav = (character) => { //{id,name,status,species,gender,origin,image,onClose}
-    const endpoint = 'http://localhost:3001/rickandmorty/fav';
-    return (dispatch) => {
-       axios.post(endpoint, character).then(({ data }) => {
-           // console.log(data);//[{id,name,status,species,gender,origin,image,onClose}]
-          return dispatch({
-             type: ADD_FAV,
-             payload: data,
-          });
-       });
+    return async (dispatch) => {
+        try {
+            const endpoint = 'http://localhost:3001/rickandmorty/fav';
+            const {data}= await axios.post(endpoint,character)//[{…}]
+            return dispatch({
+                type: ADD_FAV,
+                payload: data,
+            });
+        } catch (error) {
+            console.log("addFav not found",error.message);
+        }
     };
  };
 
  export const removeFav = (id) => { 
-    
-    const endpoint = `http://localhost:3001/rickandmorty/fav/${id}`; //retorna  [{}]
-    return (dispatch) => {
-       axios.delete(endpoint).then(({ data }) => { //[{}]
-        //console.log(data);
-          return dispatch({
-             type: REMOVE_FAV,
-             payload: data,
-       });
-       });
+    return async (dispatch) => {
+        try {
+            const endpoint = `http://localhost:3001/rickandmorty/fav/`; //retorna  [{}]
+            const {data} = await axios.delete(`${endpoint}${id}`)
+            return dispatch({
+                type: REMOVE_FAV,
+                payload: data,
+            });
+        } catch (error) {
+            console.log("removeFAv not found",error.message);
+        }
     };
  };
  
+ // no modificaremos el archivo Detail.jsx porque suele ser más conveniente utilizar promesas en los useEffect que utilizar async/await.
+ //si se puede async await explicacion en useCharacter (hooks)
 export const getCharacterDetail= (id)=>{
     return (dispatch)=>{
         fetch(`http://localhost:3001/rickandmorty/character/${id}`)//cambiar a https://rickandmortyapi.com/api/character/${id} en caso de fallo 
@@ -47,6 +52,7 @@ export const getCharacterDetail= (id)=>{
 
     }
 }
+//characater update un useeffect en component detail
 
 export const cleanDetail=()=>{
     return {
@@ -85,6 +91,18 @@ export const addFav = (per) =>{
         payload:per
     }
 }
+export const addFav = (character) => { //{id,name,status,species,gender,origin,image,onClose}
+    const endpoint = 'http://localhost:3001/rickandmorty/fav';
+    return (dispatch) => {
+       axios.post(endpoint, character).then(({ data }) => {
+           // console.log(data);//[{id,name,status,species,gender,origin,image,onClose}]
+          return dispatch({
+             type: ADD_FAV,
+             payload: data,
+          });
+       });
+    };
+ };
 
 
 

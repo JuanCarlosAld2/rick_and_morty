@@ -3,13 +3,11 @@ const axios = require('axios');
 require('dotenv').config()//process.env
 const URL= process.env.API_URL
 
-
-
-const getCharById = (req,res)=>{
-    const {id}= req.params //string
-    axios(`${URL}${id}`)
-    .then(({data})=>{
-        if(data){
+    const getCharById = async(req,res) =>{
+        try {
+            const{id}= req.params
+            const {data} = await axios(`${URL}${id}`)
+            if (!data) return res.status(404).json({ error: "Character not found" });
             const personaje= {
                 id:data.id,
                 name:data.name,
@@ -20,23 +18,44 @@ const getCharById = (req,res)=>{
                 status:data.status
             }
             return res.status(200).json(personaje)
-        }else{
-            res.status(404).json({message:"Not fount."})
+        } catch (error) {
+            res.status(500).json({message:error.message})
         }
-    })
-    .catch((error)=>{
-        res.status(500).json({message:error}) //error que se manda al front app (onsearch)
-    })
-
-
-}
-
-module.exports={
-    getCharById
-}
+    }
+    
+    module.exports={
+        getCharById
+    }
 
 
 
+    //codigo con promesas
+
+// const getCharById = (req,res)=>{
+//     const {id}= req.params //string
+//     axios(`${URL}${id}`)
+//     .then(({data})=>{
+//         if(data){
+//             const personaje= {
+//                 id:data.id,
+//                 name:data.name,
+//                 gender:data.gender,
+//                 species:data.species,
+//                 origin:data.origin?.name,
+//                 image: data.image,
+//                 status:data.status
+//             }
+//             return res.status(200).json(personaje)
+//         }else{
+//             res.status(404).json({message:"Not fount."})
+//         }
+//     })
+//     .catch((error)=>{
+//         res.status(500).json({message:error}) //error que se manda al front app (onsearch)
+//     })
+
+
+// }
 
 
 

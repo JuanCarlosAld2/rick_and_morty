@@ -4,13 +4,17 @@ const PASSWORD= process.env.PASSWORD
 
 
 const login = (req,res) => {
-const { email,password} = req.query
-    if(!email || !password){
-        res.status(500).json({message: "there isn`t apassword or email "})
-    }
-    let flag = EMAIL === email && PASSWORD === password;
-    if(flag)return res.status(200).json({access:true})
-    res.status(200).json({access:false})
+    //try { // desomentar cuando se use una base de datos 
+        const { email,password} = req.query
+        if(!email || !password)return res.status(400).json({message:"Email or password is missing" })
+    
+        let flag = EMAIL === email && PASSWORD === password;
+        if(flag)return res.status(200).json({access:true})
+        res.status(200).json({access:false}) // retorno un 200 para poder hacer algo con la respuesta de lado de app client
+    //} catch (error) {
+        //res.status(500).json({error:error.message})
+    //}
+    
 
 }
 
