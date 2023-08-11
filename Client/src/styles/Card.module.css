@@ -23,6 +23,7 @@
   transition: background-color 0.3s ease; 
   float: right; /* Alinea el botón a la derecha */
   border-radius: 50%; /* Hace el botón redondo */
+  
 }
 
 .card button:hover {
@@ -41,3 +42,4 @@
 .card .image:hover {
   transform: scale(1.1) rotateY(180deg);
 }
+

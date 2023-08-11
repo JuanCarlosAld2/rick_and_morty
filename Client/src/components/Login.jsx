@@ -5,6 +5,7 @@ import { validatepassword } from "./validations";
 export default function Login({login}){
     const errorStyle = {
         color: "red",
+    
       };
     const [userData,setUserData]=useState({
         email:"",
@@ -45,36 +46,38 @@ export default function Login({login}){
     }
 
     return(
-        <form onSubmit={handleSubmit}>
-            <div>
-                <input 
-                    type="text" 
-                    placeholder="Email"
-                    name="email"
-                    value={userData.email}
-                    onChange={handleEmail}
-                />
-                <br/>
-                <p style={errorStyle}>{errors.email}</p>
-            </div> 
-            <div>
-                <input 
-                    type="text" 
-                    placeholder="Password"
-                    name="password"
-                    value={userData.password}
-                    onChange={handlePass}
-            
-                />
-                <br/>
-                <p style={errorStyle}>{errors.password}</p>
-            </div>
-            {
-                userData.email && userData.password ? <button type="submit">Acceder</button>:null 
-            }
-            
-    
-            
-        </form>
+        <div>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <input 
+                        type="text" 
+                        placeholder="Email"
+                        name="email"
+                        value={userData.email}
+                        onChange={handleEmail}
+                    />
+                    <br/>
+                    <span style={errorStyle}>{errors.email}</span>
+                </div> 
+                <div>
+                    <input 
+                        type="text" 
+                        placeholder="Password"
+                        name="password"
+                        value={userData.password}
+                        onChange={handlePass}
+                     />
+                    <br/>
+                    <span style={errorStyle}>{errors.password}</span>
+                </div>
+                <div>
+                    {
+                        userData.email && userData.password ? <button type="submit">Acceder</button>:null 
+                    }
+                </div>
+
+            </form>
+        </div>
+       
     );  
 }

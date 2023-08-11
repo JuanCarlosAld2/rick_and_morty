@@ -37,25 +37,31 @@ export default function Card(props) {
    }, [myFavorites]);
 
    return (
-      <div key={id} className={style.card}>
-         {
-            pathname === "/home" ? ( // condicion para que cuando no este en ruta home desaparesca el corazon
-               isFav ? (
-                  <button onClick={handleFavorite}>❤️</button>
-               ): (
+      <article key={id} className={style.card}>
+         <div>
+            {
+               pathname === "/home" ? ( // condicion para que cuando no este en ruta home desaparesca el corazon
+                  isFav ? (
+                     <button onClick={handleFavorite}>❤️</button>
+                  ): (
                      <button onClick={handleFavorite}>🤍</button>
                   )
-            ) : null
-         }
-         <button onClick={()=>onClose(id) }>x</button>
+               ) : null
+            }
+            <button onClick={()=>onClose(id) }>x</button>
+         </div>
+
+      
          <h3>{name}</h3>
-         
-         <Link to={`/detail/${id}`}>
-            <img src={image} alt={name} className={style.image}/>
-         </Link>
+         <div className={style.divimg}>
+            <Link to={`/detail/${id}`}>
+               <img src={image} alt={name} className={style.image}/>
+            </Link>
+         </div>
+       
          
           
-      </div>
+      </article>//div
    );
 }
 

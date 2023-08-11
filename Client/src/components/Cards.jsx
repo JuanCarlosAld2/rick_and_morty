@@ -3,10 +3,11 @@ import React from 'react';
 import style from '../styles/Cards.module.css'
 
 export default function Cards({characters,onClose}) {
-   return <div className={style.cards_container}>
+   return <main className={style.cards_container}>
             {  characters &&
                characters.map((el)=>(
                <Card 
+               
                key={el.id} // solo sirve para react !== de id 
                id={el.id}
                name={el.name} 
@@ -23,7 +24,7 @@ export default function Cards({characters,onClose}) {
 
             
             
-         </div>;
+         </main>;//div
 }
 
 

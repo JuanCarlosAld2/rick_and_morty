@@ -1,10 +1,18 @@
 const app = require('./app');
 require('dotenv').config()//process.env
 const PORT= process.env.PORT || 3001;
+const {conn} = require('./db')
 
-app.listen(PORT,()=>{
-    console.log(`Server raised in port http://localhost:${PORT}`)
-});
+//force:true Elimina todas las tablas de la BDD y las vulve a crear en bse a los modelos
+//alter:true actualiza las tablas de BDD en base a los modelos
+conn.sync({force:true}).then(()=>{
+    app.listen(PORT,()=>{
+        console.log(`Server raised in port http://localhost:${PORT}`)
+    });
+})
+.catch((error)=>console.log(error.message))
+
+
 
 
 
