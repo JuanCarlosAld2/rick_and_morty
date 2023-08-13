@@ -17,22 +17,22 @@ export default function Login({login}){
         password:""
     })
 
-    const handleEmail = (e) => {
+    const handleEmail = (e) => { // manejador de errores de email
         const property = e.target.name;
         const value = e.target.value;
         setUserData({...userData,[property]:value})
         validateEmail({...userData,[property]:value}, setErrors,errors)
     }
-    const handlePass = (e) => {
+    const handlePass = (e) => {// manejador de errores de passwprd
         const property = e.target.name;
         const value = e.target.value;
         setUserData({...userData,[property]:value})
         validatepassword({...userData,[property]:value}, setErrors,errors)
     }
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = (e)=>{ // manda indormacion 
         e.preventDefault()
-        if(!errors.email && !errors.password ){
+        if(!errors.email && !errors.password ){//si no exiten errores en el estado errors manda informacion
             setUserData({
                 email:"",
                 password:""

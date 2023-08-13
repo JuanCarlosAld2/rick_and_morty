@@ -5,7 +5,7 @@ const {conn} = require('./db')
 
 //force:true Elimina todas las tablas de la BDD y las vulve a crear en bse a los modelos
 //alter:true actualiza las tablas de BDD en base a los modelos
-conn.sync({force:true}).then(()=>{
+conn.sync({force:false}).then(()=>{
     app.listen(PORT,()=>{
         console.log(`Server raised in port http://localhost:${PORT}`)
     });

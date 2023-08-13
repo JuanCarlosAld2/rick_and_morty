@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function Card(props) {
    
-   const {id,name,status,species,gender,origin,image,onClose} = props;
+   const {id,name,status,species,gender,origin,image} = props; //agregar onclose si rompe
     //console.log(typeof(id));  string
    const [isFav,setIsFav]= useState(false);
 
@@ -25,6 +25,7 @@ export default function Card(props) {
       else{
          setIsFav(true)
          dispatch(addFav(props))
+         
       }
    }
 
@@ -48,7 +49,7 @@ export default function Card(props) {
                   )
                ) : null
             }
-            <button onClick={()=>onClose(id) }>x</button>
+            <button onClick={()=>props.onClose(id) }>x</button>
          </div>
 
       

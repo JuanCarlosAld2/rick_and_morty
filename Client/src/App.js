@@ -33,11 +33,14 @@ function App() {
          if(access){
             setAccess(data);
             access && navigate('/home');
-         }else{
-            alert("Datos incorrectos")
          }
+         // else{//queda en desuso por como esta construida el servidor
+         //    alert("Datos incorrectos")
+         // }
       } catch (error) {
-         console.log(error.message);
+         //console.log(error.message);
+         //console.log(error.response.data.message);
+         alert(error.response.data.message)
       }
 
    }
